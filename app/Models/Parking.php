@@ -10,7 +10,7 @@ class Parking extends Model
     use HasFactory;
 
     protected $fillable = [
-        'parking_lot', 'availability', 'time_admissionn', 'time_departure',
+        'parking_lot', 'availability', 'time_admission', 'time_departure',
         ];
 
     public function parkings()
