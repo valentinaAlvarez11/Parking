@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Parking;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
 
 class ParkingsSeeder extends Seeder
 {
@@ -15,9 +15,7 @@ class ParkingsSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        DB::table('parkings')->delete();
-        Parking::create([
+    { Parking::create([
         'parking_lot' => 'Parqueadero la 22',
         'availability' => si,
         'time_admission' => '12:00 pm',

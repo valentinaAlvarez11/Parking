@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
+//use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
@@ -16,7 +18,6 @@ class VehiclesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('vehicles')->delete();
         Parking::create([
             'plate' => 'MJS07D',
             'color' => 'rojo',
