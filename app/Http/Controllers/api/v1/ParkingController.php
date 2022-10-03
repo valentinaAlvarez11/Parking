@@ -15,7 +15,9 @@ class ParkingController extends Controller
      */
     public function index()
     {
-        //
+
+        $parkings = Parking::orderBy('name', 'asc')->get();
+        return response()->json(['data' => $parkings], 200);
     }
 
     /**
@@ -26,7 +28,8 @@ class ParkingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $parking = Parking::create($request->all());
+        return response()->json(['data' => $parking], 201);
     }
 
     /**
@@ -37,7 +40,7 @@ class ParkingController extends Controller
      */
     public function show(Parking $parking)
     {
-        //
+    return response()->json(['data' => $parking], 200);
     }
 
     /**
@@ -49,7 +52,8 @@ class ParkingController extends Controller
      */
     public function update(Request $request, Parking $parking)
     {
-        //
+        $parking->update($request->all());
+        return response()->json(['data' => $parking], 200);
     }
 
     /**
@@ -60,6 +64,7 @@ class ParkingController extends Controller
      */
     public function destroy(Parking $parking)
     {
-        //
+        $parking->delete();
+        return response(null, 204);
     }
 }

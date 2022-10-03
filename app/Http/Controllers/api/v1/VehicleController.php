@@ -15,7 +15,8 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        //
+        $vehicles = Vehicle::orderBy('name', 'asc')->get();
+        return response()->json(['data' => $vehicles], 200)
     }
 
     /**
@@ -26,7 +27,8 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $vehicle = Vehicle::create($request->all());
+        return response()->json(['data' => $vehicle], 201);
     }
 
     /**
@@ -37,7 +39,7 @@ class VehicleController extends Controller
      */
     public function show(Vehicle $vehicle)
     {
-        //
+        return response()->json(['data' => $vehicle], 200);
     }
 
     /**
@@ -49,7 +51,8 @@ class VehicleController extends Controller
      */
     public function update(Request $request, Vehicle $vehicle)
     {
-        //
+        $vehicle->update($request->all());
+        return response()->json(['data' => $vehicle], 200);
     }
 
     /**
@@ -60,6 +63,7 @@ class VehicleController extends Controller
      */
     public function destroy(Vehicle $vehicle)
     {
-        //
+        $vehicle->delete();
+        return response(null, 204);
     }
 }
