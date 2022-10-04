@@ -17,14 +17,16 @@ return new class extends Migration
             $table->id();
             $table->string('parking_lot')->unique();
             $table->boolean('availability');
-            $table->timestamps('time_admission');
-            $table->timestamps('time_departure');
-            $table->time(hora);
+            $table->time('time_admission');
+            $table->time('time_departure');
+
             $table->timestamps();
 
+
+            $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
             });
     }
 

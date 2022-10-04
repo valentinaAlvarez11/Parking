@@ -7,7 +7,7 @@ use App\Models\Parking;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ParkingsSeeder extends Seeder
+class ParkingSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,9 +15,10 @@ class ParkingsSeeder extends Seeder
      * @return void
      */
     public function run()
-    { Parking::create([
+    {
+        Parking::create([
         'parking_lot' => 'Parqueadero la 22',
-        'availability' => si,
+        'availability' => 'si',
         'time_admission' => '12:00 pm',
         'time_departure' => '7:00 pm',
          'user_id' => User::all()->random()->id,

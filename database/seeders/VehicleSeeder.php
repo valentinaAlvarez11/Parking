@@ -9,7 +9,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Vehicle;
 
-class VehiclesSeeder extends Seeder
+class VehicleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,19 +18,19 @@ class VehiclesSeeder extends Seeder
      */
     public function run()
     {
-        Parking::create([
+        Vehicle::create([
             'plate' => 'MJS07D',
             'color' => 'rojo',
             'user_id' => User::all()->random()->id,
         ]);
 
-        Parking::create([
+        Vehicle::create([
             'plate' => 'NAL638',
             'color' => 'azul',
             'user_id' => User::all()->random()->id,
             ]);
 
-        Parking::create([
+        Vehicle::create([
             'plate' => 'MAS638',
             'color' => 'amarillo',
             'user_id' => User::all()->random()->id,
