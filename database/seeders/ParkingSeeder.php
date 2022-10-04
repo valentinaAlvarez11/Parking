@@ -17,27 +17,11 @@ class ParkingSeeder extends Seeder
     public function run()
     {
         Parking::create([
-        'parking_lot' => 'Parqueadero la 22',
-        'availability' => 'si',
-        'time_admission' => '12:00 pm',
-        'time_departure' => '7:00 pm',
-         'user_id' => User::all()->random()->id,
+        'parking_lot' => '1',
+        'availability' => true,
+        'time_admission' => Carbon::now()->format('Y-m-d H:i:s'),
+        'time_departure' => Carbon::now()->format('Y-m-d H:i:s'),
+        'user_id' => User::all()->random()->id,
         ]);
-
-        Parking::create([
-            'parking_lot' => 'Parqueadero valentina',
-            'availability' => no,
-            'time_admission' => '4:00 pm',
-            'time_departure' => '6:00 pm',
-             'user_id' => User::all()->random()->id,
-            ]);
-
-        Parking::create([
-            'parking_lot' => 'Parqueadero bella vista',
-            'availability' => no,
-            'time_admission' => '8:00 pm',
-            'time_departure' => '10:00 pm',
-             'user_id' => User::all()->random()->id,
-            ]);
     }
 }
