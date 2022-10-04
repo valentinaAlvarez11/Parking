@@ -19,21 +19,9 @@ class VehicleSeeder extends Seeder
     public function run()
     {
         Vehicle::create([
-            'plate' => 'MJS07D',
+            'plate' => 'HLG789',
             'color' => 'rojo',
             'user_id' => User::all()->random()->id,
         ]);
-
-        Vehicle::create([
-            'plate' => 'NAL638',
-            'color' => 'azul',
-            'user_id' => User::all()->random()->id,
-            ]);
-
-        Vehicle::create([
-            'plate' => 'MAS638',
-            'color' => 'amarillo',
-            'user_id' => User::all()->random()->id,
-                ]);
     }
 }
