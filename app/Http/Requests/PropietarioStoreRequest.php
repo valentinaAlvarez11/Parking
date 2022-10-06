@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Foundation\Http\FormRequest;
 
-class PrecioStoreRequest extends FormRequest
+class PropietarioStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,10 +26,9 @@ class PrecioStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            "valor_parqueo_hora" => "required|numeric|min:4",
-            "valor_total" => "required|numeric|min:4"
-
-        ];
+            "nombre" => "required|alpha_dash|min:3",
+    
+            ];
     }
 
     public function failedValidation(Validator $validator)
@@ -38,4 +37,3 @@ class PrecioStoreRequest extends FormRequest
     422));
     }
 }
-

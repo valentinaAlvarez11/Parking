@@ -1,69 +1,67 @@
 <?php
 
-namespace App\Http\Controllers\api\v1;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Vehicle;
+use App\Models\conductor;
 use Illuminate\Http\Request;
+use App\Models\vehiculo;
+use Illuminate\Support\Facades\DB;
 
-class VehicleController extends Controller
+class VehiculoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function getVehiculos ()
     {
-        $vehicles = Vehicle::orderBy('name', 'asc')->get();
-        return response()->json(['data' => $vehicles], 200)
+        return response()->json(vehiculo::all(), 200);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function getVehiculoById ($id)
     {
-        $vehicle = Vehicle::create($request->all());
-        return response()->json(['data' => $vehicle], 201);
+        $vehiculo = vehiculo::find($id);
+        if (is_null($vehiculo)) {
+            return response()->json([
+                'Mensaje' => 'Registro no encontrado'
+            ], 404);
+        }
+        return response()->json($vehiculo::find($id), 200);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Vehicle  $vehicle
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Vehicle $vehicle)
+    public function insertVehiculo (Request $request)
     {
-        return response()->json(['data' => $vehicle], 200);
+        $placa = DB::table('vehiculos')->where('placa', $request->placa)->exists();
+        if ($placa) {
+            return response()->json([
+                'Mensaje' => 'La placa del vehiculo ya está registrada'
+            ], 404);
+        }
+        $vehiculo = vehiculo::create($request->all());
+        return response($vehiculo, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Vehicle  $vehicle
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Vehicle $vehicle)
+    public function updateVehiculo (Request $request, $id)
     {
-        $vehicle->update($request->all());
-        return response()->json(['data' => $vehicle], 200);
+        $vehiculo = vehiculo::find($id);
+        if (is_null($vehiculo)) {
+            return response()->json([
+                'Mensaje' => 'Registro no encontrado'
+            ], 404);
+        }
+        $vehiculo->update($request->all());
+        return response($vehiculo, 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Vehicle  $vehicle
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Vehicle $vehicle)
+    public function deleteVehiculo ($id)
     {
-        $vehicle->delete();
-        return response(null, 204);
+        $vehiculo = vehiculo::find($id);
+        if (is_null($vehiculo)) {
+            return response()->json([
+                'Mensaje' => 'Registro no encontrado'
+            ], 404);
+        }
+        $vehiculo->delete();
+        return response()->json([
+            'Mensaje'=> 'Se ha eliminado correctamente'
+        ], 200);
     }
+
 }
+

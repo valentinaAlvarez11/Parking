@@ -27,7 +27,7 @@ class VehiculoStoreRequest extends FormRequest
     {
         return [
             "placa" => "required|max:6|min:6",
-            "color" => "required|max:20",,
+            "color" => "required|max:20",
             "user_id" => "required|exists:users,id"
             ];
     }
