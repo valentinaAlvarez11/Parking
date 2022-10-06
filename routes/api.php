@@ -20,5 +20,9 @@ use App\Http\Controllers\api\v1\ParkingController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::apiResource('v1/vehicles', VehicleController::class);
-Route::apiResource('v1/parkings', ParkingController::class);
+
+Route::get('conductor', 'App\Http\Controllers\ConductorController@getConductor');
+Route::get('conductor/{id}', 'App\Http\Controllers\ConductorController@getConductorById');
+Route::post('addConductor', 'App\Http\Controllers\ConductorController@insertConductor');
+Route::put('editConductor/{id}', 'App\Http\Controllers\ConductorController@updateConductor');
+Route::delete('deleteConductor/{id}', 'App\Http\Controllers\ConductorController@deleteConductor');
