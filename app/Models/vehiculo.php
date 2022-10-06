@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class vehiculo extends Model
 {
-    use HasFactory;
+    public $timestamp = false;
+    protected $fillable = ['placa', 'color', 'user_id'];
+
+    public function vehiculo ()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 }
