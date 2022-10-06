@@ -19,3 +19,11 @@ Route::get('vehiculo/{id}', 'App\Http\Controllers\VehiculoController@getVehiculo
 Route::post('addVehiculo', 'App\Http\Controllers\VehiculoController@insertVehiculo');
 Route::put('editVehiculo/{id}', 'App\Http\Controllers\VehiculoController@updateVehiculo');
 Route::delete('deleteVehiculo/{id}', 'App\Http\Controllers\VehiculoController@deleteVehiculo');
+
+Route::get('parqueaderos', 'App\Http\Controllers\ParqueaderoController@getParqueadero');
+Route::get('parqueadero/{lote}', 'App\Http\Controllers\ParqueaderoController@getParqueaderoByLote');
+Route::put('setVehiculo/{id}', 'App\Http\Controllers\ParqueaderoController@setVehiculo');
+Route::put('removeVehiculo/{id}', 'App\Http\Controllers\ParqueaderoController@removeVehiculo');
+Route::get('parqueoLibre', 'App\Http\Controllers\ParqueaderoController@getParqueoLibre');
+Route::get('estadisticas', 'App\Http\Controllers\ParqueaderoController@estadisticas');
+Route::get('producido', 'App\Http\Controllers\ParqueaderoController@producido');
