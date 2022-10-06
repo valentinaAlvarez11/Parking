@@ -3,9 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
 
 Route::get('conductor', 'App\Http\Controllers\ConductorController@getConductor');
 Route::get('conductor/{id}', 'App\Http\Controllers\ConductorController@getConductorById');
@@ -27,3 +25,10 @@ Route::put('removeVehiculo/{id}', 'App\Http\Controllers\ParqueaderoController@re
 Route::get('parqueoLibre', 'App\Http\Controllers\ParqueaderoController@getParqueoLibre');
 Route::get('estadisticas', 'App\Http\Controllers\ParqueaderoController@estadisticas');
 Route::get('producido', 'App\Http\Controllers\ParqueaderoController@producido');
+
+Route::middleware(['auth:sanctum'])->group(function() {
+    Route::post('/v1/logout',
+    [App\Http\Controllers\api\v1\AuthController::class,
+    'logout'])->name('api.logout');
+   });
+
