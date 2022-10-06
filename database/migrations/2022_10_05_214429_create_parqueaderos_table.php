@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('dia');
 
             $table->foreignId('tipoVehiculo_id');
-            $table->foreign('tipoVehiculo_id')->references('id')->on('tipoVehiculo')
+            $table->foreign('tipoVehiculo_id')->references('id')->on('tipo_vehiculo')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
