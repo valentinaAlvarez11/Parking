@@ -13,18 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('vehicles', function (Blueprint $table) {
+        Schema::create('conductors', function (Blueprint $table) {
             $table->id();
-            $table->string('plate', 6)->unique();
-            $table->string('color');
-            $table->foreignId('user_id');
+            $table->string('nombre');
+            $table->string('telefono');
             $table->timestamps();
-            
-
-            $table->foreign('user_id')->references('id')->on('users')
-                    ->onDelete('cascade')
-                    ->onUpdate('cascade');
-            });
+        });
     }
 
     /**
@@ -34,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vehicles');
+        Schema::dropIfExists('conductors');
     }
 };
