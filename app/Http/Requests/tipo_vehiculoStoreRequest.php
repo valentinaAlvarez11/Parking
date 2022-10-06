@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Foundation\Http\FormRequest;
 
-class PrecioStoreRequest extends FormRequest
+class tipo_vehiculoStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,10 +26,9 @@ class PrecioStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            "valor_parqueo_hora" => "required|numeric|min:3",
-            "valor_total" => "required|numeric|min:3"
-
-        ];
+            "tipo_vehiculo" => "required|min:4",
+            "tarifa_inicial" => "required|numeric|min:3"
+            ];
     }
 
     public function failedValidation(Validator $validator)
@@ -38,4 +37,3 @@ class PrecioStoreRequest extends FormRequest
     422));
     }
 }
-
